@@ -1,0 +1,18 @@
+WITH t1 AS (
+              SELECT student_id
+                FROM (
+                       SELECT *,
+                              MIN(score) OVER main_window as least,
+                              MAX(score) OVER main_window as most
+                         FROM exam
+                       WINDOW main_window AS (PARTITION BY exam_id)
+                     ) as a
+              where least = score or most = score
+            )
+
+SELECT DISTINCT student_id, 
+                student_name
+FROM exam JOIN student
+USING (student_id)
+WHERE student_id != ALL(SELECT student_id FROM t1)
+ORDER BY 1
