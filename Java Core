@@ -2,25 +2,25 @@ class Sort
 {
     static void bubbleSort(int arr[], int n)
     {                                       
-        if (n == 1)                     //passes are done
+        if (n == 1)
         {
             return;
         }
 
-        for (int i=0; i<n-1; i++)       //iteration through unsorted elements
+        for (int i=0; i<n-1; i++)     
         {
-            if (arr[i] > arr[i+1])      //check if the elements are in order
-            {                           //if not, swap them
+            if (arr[i] > arr[i+1])      
+            {                        
                 int temp = arr[i];
                 arr[i] = arr[i+1];
                 arr[i+1] = temp;
             }
         }
             
-        bubbleSort(arr, n-1);           //one pass done, proceed to the next
+        bubbleSort(arr, n-1);          
     }
 
-    void display(int arr[])                 //display the array
+    void display(int arr[])                 
     {  
         for (int i=0; i<arr.length; ++i) 
         {
